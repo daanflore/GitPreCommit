@@ -21,7 +21,7 @@ public class TrimTrailingWhiteSpace
         {
             foreach (string line in allLines)
             {
-                if (!string.IsNullOrEmpty(line) && line.Length > 1)
+                if(line != null)
                 {
                     sw.WriteLine(line.TrimEnd(' '));
                 }
