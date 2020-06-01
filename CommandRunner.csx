@@ -1,5 +1,5 @@
 public class CommandRunner {
- public static string Execute(string command) {
+ public static CommandRunnerResult Execute(string command) {
   // according to: https://stackoverflow.com/a/15262019/637142
   // thans to this we will pass everything as one command
   command = command.Replace("\"", "\"\"");
@@ -9,17 +9,42 @@ public class CommandRunner {
      Arguments = "/c \"" + command + "\"",
      UseShellExecute = false,
      RedirectStandardOutput = true,
-     CreateNoWindow = true
+     CreateNoWindow = true,
+     RedirectStandardError = true
    }
   };
   
   proc.Start();
   proc.WaitForExit();
-  
-  if (proc.ExitCode != 0 || proc.ExitCode != 2) {
-   return proc.ExitCode.ToString();
-  }
-  
-  return proc.StandardOutput.ReadToEnd();
+
+  CommandRunnerResult commandRunnerResult = new CommandRunnerResult()
+  {
+    ExitCode = proc.ExitCode,
+    Output = proc.StandardOutput.ReadToEnd(),
+    Error  = proc.StandardError.ReadToEnd()
+  };
+    
+  return commandRunnerResult;
  }
+
+ public class CommandRunnerResult
+ {
+    public int ExitCode
+    {
+      get;
+      set;
+    }
+
+    public string Error
+    {
+      get;
+      set;  
+    }
+
+    public string Output
+    {
+      get;
+      set;
+    }    
+ }  
 }
