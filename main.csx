@@ -4,13 +4,20 @@
 # load "GitStashRunner.csx"
 
 GitStashRunner.StashChanges();
-CommandRunner.CommandRunnerResult result = CommandRunner.Execute("git diff-index --check -z HEAD");
 
-if( result.ExitCode == 2)
+try
 {
-    string[] files = GitDiffIndexParser.GetLinesWithWhiteSpace(result.Output);
-    TrimTrailingWhiteSpace.TrimWhiteSpace(files);    
-}     
+    CommandRunner.CommandRunnerResult result = CommandRunner.Execute("git diff-index --check -z HEAD");
 
-GitStashRunner.UnstashChanges(); 
+    if( result.ExitCode == 2)
+    {
+        string[] files = GitDiffIndexParser.GetLinesWithWhiteSpace(result.Output);
+        TrimTrailingWhiteSpace.TrimWhiteSpace(files);    
+    }     
+}
+finally
+{
+    GitStashRunner.UnstashChanges(); 
+}
+
 Console.WriteLine("Hello world!");   
