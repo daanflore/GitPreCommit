@@ -1,11 +1,11 @@
-public static class GitDiffIndexParser 
+public static class GitDiffIndexParser
 {
     public static string[] GetLinesWithWhiteSpace(string gitResult)
     {
         HashSet<string> filesWithWhiteSpace = new HashSet<string>();
 
-        string[] lines = gitResult.Split("\n"); 
-      
+        string[] lines = gitResult.Split("\n");
+
         for (int index = 0; index < lines.Length; index++)
         {
             string line = lines[index];
@@ -21,7 +21,7 @@ public static class GitDiffIndexParser
             }
         }
 
-        return filesWithWhiteSpace.ToArray();        
+        return filesWithWhiteSpace.ToArray();
     }
 
     private static string ParseFileName(string lineToParse)

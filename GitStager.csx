@@ -1,8 +1,8 @@
 #load "CommandRunner.csx"
 
-public static class GitStasher
+public static class GitStager
 {
-    public static void StageChanges(string file) 
+    public static void StageChanges(string file)
     {
         CommandRunner.Execute($"git add {file}");
     }

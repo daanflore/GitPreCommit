@@ -12,12 +12,12 @@ try
     if( result.ExitCode == 2)
     {
         string[] files = GitDiffIndexParser.GetLinesWithWhiteSpace(result.Output);
-        TrimTrailingWhiteSpace.TrimWhiteSpace(files);    
-    }     
+        TrimTrailingWhiteSpace.TrimWhiteSpace(files);
+    }
 }
 finally
 {
-    GitStasher.UnstashChanges(); 
+    GitStasher.UnstashChanges();
 }
 
-Console.WriteLine("Hello world!");   
+Console.WriteLine("Hello world!");

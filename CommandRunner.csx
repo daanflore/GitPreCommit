@@ -1,13 +1,13 @@
-public static class CommandRunner 
+public static class CommandRunner
 {
-    public static CommandRunnerResult Execute(string command) 
+    public static CommandRunnerResult Execute(string command)
     {
         // according to: https://stackoverflow.com/a/15262019/637142
         // thans to this we will pass everything as one command
         command = command.Replace("\"", "\"\"");
-        var proc = new Process 
+        var proc = new Process
         {
-            StartInfo = new ProcessStartInfo 
+            StartInfo = new ProcessStartInfo
             {
                 FileName = "cmd",
                 Arguments = "/c \"" + command + "\"",
@@ -17,7 +17,7 @@ public static class CommandRunner
                 RedirectStandardError = true
             }
         };
-        
+
         proc.Start();
         proc.WaitForExit();
 
@@ -27,7 +27,7 @@ public static class CommandRunner
             Output = proc.StandardOutput.ReadToEnd(),
             Error  = proc.StandardError.ReadToEnd()
         };
-          
+
         return commandRunnerResult;
     }
 
@@ -42,7 +42,7 @@ public static class CommandRunner
         public string Error
         {
             get;
-            set;  
+            set;
         }
 
         public string Output
