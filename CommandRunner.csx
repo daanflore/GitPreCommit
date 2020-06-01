@@ -6,7 +6,7 @@ public class CommandRunner {
   var proc = new Process {
    StartInfo = new ProcessStartInfo {
     FileName = "cmd",
-     Arguments = "-c \"" + command + "\"",
+     Arguments = "/c \"" + command + "\"",
      UseShellExecute = false,
      RedirectStandardOutput = true,
      CreateNoWindow = true
