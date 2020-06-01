@@ -1,4 +1,4 @@
-public class GitDiffIndexParser 
+public static class GitDiffIndexParser 
 {
     public static string[] GetLinesWithWhiteSpace(string gitResult)
     {

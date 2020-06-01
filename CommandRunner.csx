@@ -1,4 +1,4 @@
-public class CommandRunner 
+public static class CommandRunner 
 {
     public static CommandRunnerResult Execute(string command) 
     {

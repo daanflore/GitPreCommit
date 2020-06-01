@@ -1,4 +1,6 @@
-public class TrimTrailingWhiteSpace
+#load "GitStager.csx"
+
+public static class TrimTrailingWhiteSpace
 {
     public static void TrimWhiteSpace(string[] files)
     {
@@ -9,6 +11,7 @@ public class TrimTrailingWhiteSpace
            if(fileInfo.Exists)
            {
              TrimFile(fileInfo);
+             GitStager.StageChanges(fileInfo.FullName);
            }
        }
     }

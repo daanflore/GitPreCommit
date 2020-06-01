@@ -1,9 +1,9 @@
 # load "CommandRunner.csx"
 # load "GitDiffIndexParser.csx"
 # load "TrimTrailingWhiteSpace.csx"
-# load "GitStashRunner.csx"
+# load "GitStasher.csx"
 
-GitStashRunner.StashChanges();
+GitStasher.StashChanges();
 
 try
 {
@@ -17,7 +17,7 @@ try
 }
 finally
 {
-    GitStashRunner.UnstashChanges(); 
+    GitStasher.UnstashChanges(); 
 }
 
 Console.WriteLine("Hello world!");   

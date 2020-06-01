@@ -1,6 +1,6 @@
 #load "CommandRunner.csx"
 
-public class GitStashRunner 
+public static class GitStasher
 {
     public static void StashChanges() 
     {
