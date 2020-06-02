@@ -1,4 +1,5 @@
 #load "GitStager.csx"
+#load "CommandRunner.csx"
 
 public static class TrimTrailingWhiteSpace
 {
@@ -10,8 +11,11 @@ public static class TrimTrailingWhiteSpace
 
            if(fileInfo.Exists)
            {
-             TrimFile(fileInfo);
-             GitStager.StageChanges(fileInfo.FullName);
+                string fileContent = File.ReadAllText(fileInfo.FullName);
+                CommandRunner.CommandRunnerResult result = CommandRunner.Execute($"git checkout -- \"{fileInfo.FullName}\"");
+                TrimFile(fileInfo);
+                GitStager.StageChanges(fileInfo.FullName);
+                File.WriteAllText(fileInfo.FullName, fileContent);
            }
        }
     }
