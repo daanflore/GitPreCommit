@@ -7,7 +7,7 @@ public static class TrimTrailingWhiteSpace
        foreach(string file in files)
        {
            FileInfo fileInfo = new FileInfo(file);
-           
+
            if(fileInfo.Exists)
            {
              TrimFile(fileInfo);
@@ -30,5 +30,5 @@ public static class TrimTrailingWhiteSpace
                 }
             }
         }
-    }    
+    }
 }
