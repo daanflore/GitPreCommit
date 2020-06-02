@@ -17,6 +17,7 @@ try
     {
         string[] files = GitDiffIndexParser.GetLinesWithWhiteSpace(result.Output);
         TrimTrailingWhiteSpace.TrimWhiteSpace(files);
+        result = CommandRunner.Execute("git status -s");
     }
 }
 catch(Exception ex)
