@@ -11,11 +11,11 @@ public static class TrimTrailingWhiteSpace
 
            if(fileInfo.Exists)
            {
-                string fileContent = File.ReadAllText(fileInfo.FullName);
+                string[] fileContent = File.ReadAllLines(fileInfo.FullName);
                 CommandRunner.CommandRunnerResult result = CommandRunner.Execute($"git checkout -- \"{fileInfo.FullName}\"");
                 TrimFile(fileInfo);
                 GitStager.StageChanges(fileInfo.FullName);
-                File.WriteAllText(fileInfo.FullName, fileContent);
+                TrimLine(fileInfo, fileContent);
            }
        }
     }
@@ -23,10 +23,14 @@ public static class TrimTrailingWhiteSpace
     public static void TrimFile(FileInfo file)
     {
         string[] allLines = File.ReadAllLines(file.FullName);
+        TrimLine(file, allLines);
+    }
 
+    public static void TrimLine(FileInfo file, string[] lines)
+    {
         using (StreamWriter sw = new StreamWriter(file.FullName))
         {
-            foreach (string line in allLines)
+            foreach (string line in lines)
             {
                 if(line != null)
                 {
