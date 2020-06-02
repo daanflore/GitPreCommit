@@ -1,11 +1,14 @@
+# load "logger.csx"
+
 public static class GitDiffIndexParser
 {
     public static string[] GetLinesWithWhiteSpace(string gitResult)
     {
         HashSet<string> filesWithWhiteSpace = new HashSet<string>();
-
+        Logger.WriteLine("splitting git result: " + gitResult);
         string[] lines = gitResult.Split("\n");
-
+        
+        Logger.WriteLine("Searching file names and adding to list to check");
         for (int index = 0; index < lines.Length; index++)
         {
             string line = lines[index];
@@ -21,6 +24,7 @@ public static class GitDiffIndexParser
             }
         }
 
+        Logger.WriteLine($"Returning {filesWithWhiteSpace.Count} results");
         return filesWithWhiteSpace.ToArray();
     }
 

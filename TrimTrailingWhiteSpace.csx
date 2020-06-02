@@ -1,20 +1,27 @@
 #load "GitStager.csx"
 #load "CommandRunner.csx"
+# load "logger.csx"
 
 public static class TrimTrailingWhiteSpace
 {
     public static void TrimWhiteSpace(string[] files)
     {
+       Logger.WriteLine("Looping through files");
        foreach(string file in files)
        {
            FileInfo fileInfo = new FileInfo(file);
 
            if(fileInfo.Exists)
            {
+                Logger.WriteLine("Making backup");
                 string[] fileContent = File.ReadAllLines(fileInfo.FullName);
+                Logger.WriteLine("Getting latest from index");
                 CommandRunner.CommandRunnerResult result = CommandRunner.Execute($"git checkout -- \"{fileInfo.FullName}\"");
+                Logger.WriteLine("Trim index file");
                 TrimFile(fileInfo);
+                Logger.WriteLine("Stage changes to file");
                 GitStager.StageChanges(fileInfo.FullName);
+                Logger.WriteLine("Revert to file not on index and remove spaces");
                 TrimLine(fileInfo, fileContent);
            }
        }
