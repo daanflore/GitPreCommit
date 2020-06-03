@@ -25,7 +25,6 @@ public static class TrimTrailingWhiteSpace
 
                 foreach(string line in fileContent)
                 {
-                    Logger.WriteLine($"Content: {line}");
                 }
 
                 TrimLine(fileInfo, fileContent);
@@ -47,7 +46,9 @@ public static class TrimTrailingWhiteSpace
             {
                 if(line != null)
                 {
-                    sw.WriteLine(line.TrimEnd(' '));
+                    string trimmedLine = line.TrimEnd(' ');
+                    sw.WriteLine(trimmedLine);
+                    Logger.WriteLine($"Content: {trimmedLine}");
                 }
             }
         }
