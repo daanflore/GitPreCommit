@@ -22,11 +22,6 @@ public static class TrimTrailingWhiteSpace
                 Logger.WriteLine("Stage changes to file");
                 GitStager.StageChanges(fileInfo.FullName);
                 Logger.WriteLine("Revert to file not on index and remove spaces");
-
-                foreach(string line in fileContent)
-                {
-                }
-
                 TrimLine(fileInfo, fileContent);
            }
        }
