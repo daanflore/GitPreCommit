@@ -3,8 +3,8 @@
 1. [Using](#Using)
 2. [Why](#Why)
 3. [Features](#Features)
-  3.1. [Trimming](#Trimming)
-4. [Run](#Run from vscode)
+3.1. [Trimming](#Trimming)
+4. [Run](#Run)
 
 ## Using
 This is a [dotnet-script](https://github.com/filipw/dotnet-script) based project that can be used as a pre-commit for git.
@@ -20,7 +20,7 @@ You have to copy the following files from this project to the .git/hooks folder:
 * TrimTrailingWhiteSpace.csx
 * pre-commit
 
-##Why
+## Why
 Because not all the editors that I use support editorconfigs and auto trimming I had to use the pre-commit function of git to force the cleaning.
 
 
@@ -29,7 +29,7 @@ Because not all the editors that I use support editorconfigs and auto trimming I
 The trim will remove all the spaces that are at the end of a line.
 To prevent it from always running it works based on a git diff that checks for errors in spaces.
 
-## Run from vscode
+## Run
 First you will have to install the 'c#' and 'scriptcsRunner' plugin in vscode.
 
 Next you have to alter the '.vscode/launch.json'.
