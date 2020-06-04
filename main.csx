@@ -9,8 +9,6 @@
 //
 Logger.FullFileName = @"c:\temp\pre-commit.log";
 Logger.Start();
-Logger.WriteLine("Stashing changes");
-GitStasher.StashChanges();
 
 try
 {
@@ -34,7 +32,5 @@ catch(Exception ex)
 }
 finally
 {
-    Logger.WriteLine("Unstashing changes");
-    GitStasher.UnstashChanges();
     Logger.End();
 }
