@@ -20,6 +20,7 @@ public static class TrimTrailingWhiteSpace
                 TrimFile(fileInfo);
                 Logger.WriteLine("Stage changes to file");
                 GitStager.StageChanges(fileInfo.FullName);
+                Task.Delay(100).Wait();
                 Logger.WriteLine("Revert to file not on index and remove spaces");
                 TrimLine(fileInfo, fileContent);
            }
