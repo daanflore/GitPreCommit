@@ -1,6 +1,5 @@
 #load "GitStager.csx"
 #load "CommandRunner.csx"
-# load "logger.csx"
 
 public static class TrimTrailingWhiteSpace
 {

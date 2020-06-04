@@ -1,7 +1,7 @@
-# load "logger.csx"
-
 public static class GitDiffIndexParser
 {
+
+
     public static string[] GetLinesWithWhiteSpace(string gitResult)
     {
         HashSet<string> filesWithWhiteSpace = new HashSet<string>();

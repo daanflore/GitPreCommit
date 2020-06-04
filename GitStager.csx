@@ -1,5 +1,5 @@
 #load "CommandRunner.csx"
-#load "Logger.csx"
+
 public static class GitStager
 {
     public static void StageChanges(string file)
