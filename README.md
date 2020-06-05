@@ -3,7 +3,7 @@
 1. [Using](#Using)
 2. [Why](#Why)
 3. [Features](#Features)
-3.1. [Trimming](#Trimming)
+    1. [Trimming](#Trimming)
 4. [Run](#Run)
 
 ## Using
