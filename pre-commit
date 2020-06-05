@@ -11,6 +11,7 @@
 //
 
 Logger.FullFileName = @"c:\temp\pre-commit.log";
+Logger.Log = false;
 Logger.Start();
 
 try
